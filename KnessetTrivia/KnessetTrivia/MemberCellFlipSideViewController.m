@@ -69,6 +69,9 @@
     MFMailComposeViewController *mailer = [[MFMailComposeViewController alloc]init];
     mailer.mailComposeDelegate = self;
     mailer.navigationBar.tintColor = [UIColor colorWithRed:30.0/255.0 green:114.0/255.0 blue:215.0/255.0 alpha:1.0];
+    if (self.member.email == nil) {
+        return;
+    }
     [mailer setToRecipients:[NSArray arrayWithObject:self.member.email]];
     AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
     [appDelegate.tabBarController presentModalViewController:mailer animated:YES];

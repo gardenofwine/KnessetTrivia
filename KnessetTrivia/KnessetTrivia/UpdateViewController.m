@@ -17,7 +17,7 @@ typedef enum{
 
 typedef void (^UpdateCompletionBlock)(BOOL success);
 
-#define kKnessetTriviaMemberUrl @"http://oknesset.org/api/v2/member/?format=json&extra_fields=current_role_descriptions,gender,is_current,party_name,place_of_residence"
+#define kKnessetTriviaMemberUrl @"http://oknesset.org/api/v2/member/?format=json&extra_fields=current_role_descriptions,gender,is_current,party_name,place_of_residence,email,links"
 #define kKnessetTriviaPartyUrl @"http://oknesset.org/api/v2/party/?format=json"
 #define kKnessetTriviaBillsUrl @"http://oknesset.org/api/v2/bills/?format=json"
 #define kDownloadTimeoutInterval 20.0

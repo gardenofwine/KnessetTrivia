@@ -151,10 +151,10 @@
 
 + (NSArray *)parseMemberLinksFromTree:(NSArray *)linksTree {
     NSMutableArray *linksArr = [[[NSMutableArray alloc] init] autorelease];
-    for (NSArray *linkArr in linksTree) {
+    for (NSDictionary *linkDict in linksTree) {
         KTLink *link = [[KTLink alloc] init];
-        link.linkDescription = [linkArr objectAtIndex:0];
-        link.url = [linkArr objectAtIndex:1];
+        link.linkDescription = [linkDict valueForKey:@"title"];
+        link.url = [linkDict valueForKey:@"url"];
         [linksArr addObject:link];
         [link release];
     }
@@ -188,6 +188,9 @@
         [member setName:[memberDict objectForKey:kParserKeyName]];
         [member setParty:[memberDict objectForKey:kParserKeyParty]];
         [member setPlaceOfResidence:[memberDict objectForKey:kParserKeyPlaceOfResidence]];
+        
+        [member setLinks:[KTParser parseMemberLinksFromTree:[memberDict objectForKey:kParserKeyLinks]]];
+        [member setEmail:[memberDict objectForKey:kParserKeyEmail]];
                 
         if (member.isCurrent) {
             [membersArr addObject:member];
